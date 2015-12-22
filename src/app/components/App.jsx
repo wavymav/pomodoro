@@ -13,13 +13,17 @@ export default class App extends Component {
       sessionLength: 25,
       breakLength: 5,
       timeCountDown: 25 * 60,
-      percentVal: 0
+      percentVal: 0,
+      disabled: false
     }
   }
 
   startTimer = () => {
     console.log('Start was clicked!');
     let { timeCountDown } = this.state;
+    this.setState({
+      disabled: true
+    })
 
     this.timerInterval = setInterval(() => {
       this.setState({
@@ -33,13 +37,17 @@ export default class App extends Component {
   stopTimer = () => {
     console.log('Stop was clicked!');
     clearInterval(this.timerInterval)
+    this.setState({
+      disabled: false
+    })
   }
 
   resetTimer = () => {
     console.log('Reset was clicked!');
     this.setState({
       timeCountDown: 25 * 60,
-      percentVal: 0
+      percentVal: 0,
+      disabled: false
     })
     clearInterval(this.timerInterval)
   }
@@ -47,19 +55,21 @@ export default class App extends Component {
   render() {
     const {
       timeCountDown,
-      percentVal
+      percentVal,
+      disabled
     } = this.state
 
     return (
       <div className="container">
         <Header header="Pomodoro Timer" />
         <Timer
-          time={timeCountDown}
-          percent={percentVal} />
+          time={ timeCountDown }
+          percent={ percentVal } />
         <Controls
-          startClick={this.startTimer}
-          stopClick={this.stopTimer}
-          resetClick={this.resetTimer} />
+          startClick={ this.startTimer }
+          stopClick={ this.stopTimer }
+          resetClick={ this.resetTimer }
+          disableStartBtn= { disabled } />
         <SessionControls />
       </div>
     );

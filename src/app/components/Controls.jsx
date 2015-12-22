@@ -8,13 +8,30 @@ export default class Controls extends Component {
     const {
       startClick,
       stopClick,
-      resetClick
+      resetClick,
+      disableStartBtn
     } = this.props
+
     return (
       <div className="ctrl-container">
-        <a className="btn stop" onClick={ stopClick }>Stop</a>
-        <a className="btn start" onClick={ startClick }>Start</a>
-        <a className="btn reset" onClick={ resetClick }>Reset</a>
+        <button
+          className="btn stop"
+          onClick={ stopClick }>
+          Stop
+        </button>
+
+        <button
+          className="btn start"
+          onClick={ startClick }
+          disabled={disableStartBtn}>
+          Start
+        </button>
+        
+        <button
+          className="btn reset"
+          onClick={ resetClick }>
+          Reset
+        </button>
       </div>
     );
   }
