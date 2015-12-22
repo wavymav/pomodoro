@@ -12,23 +12,29 @@ export default class App extends Component {
     this.state = {
       sessionLength: 25,
       breakLength: 5,
-      timeCountDown: 25 * 60,
-      percentVal: 0,
-      disabled: false
+      timeCountDown: null,
+      percental: 0
     }
+  }
+
+  componentWillMount() {
+    console.log('Component Mounted');
+    let { sessionLength } = this.state;
+    let initialTime = sessionLength * 60
+    this.setState({ timeCountDown: initialTime })
   }
 
   startTimer = () => {
     console.log('Start was clicked!');
-    let { timeCountDown } = this.state;
-    this.setState({
-      disabled: true
-    })
+    let { sessionLength, timeCountDown } = this.state;
+    let timerVal = sessionLength * 60
+    let totalTime = timeCountDown
+    this.setState({ disabled: true })
 
     this.timerInterval = setInterval(() => {
       this.setState({
-        timeCountDown: --timeCountDown,
-        percentVal: Math.abs(Math.round(((timeCountDown)/ 1500) * 100 - 100))
+        timeCountDown: --timerVal,
+        percentVal: Math.abs(Math.round(((timerVal)/ totalTime) * 100 - 100))
       })
       console.log(this.state.percentVal);
     }, 1000)
@@ -37,9 +43,7 @@ export default class App extends Component {
   stopTimer = () => {
     console.log('Stop was clicked!');
     clearInterval(this.timerInterval)
-    this.setState({
-      disabled: false
-    })
+    this.setState({ disabled: false })
   }
 
   resetTimer = () => {
@@ -52,11 +56,49 @@ export default class App extends Component {
     clearInterval(this.timerInterval)
   }
 
+  increaseSession = () => {
+    console.log('Session increased by 1 minute!');
+    let { sessionLength } = this.state;
+    sessionLength++
+    this.setState({
+      sessionLength: sessionLength,
+      timeCountDown: sessionLength * 60,
+      percentVal: 0
+    })
+  }
+
+  decreaseSession = () => {
+    console.log('Session decreased by 1 minute!');
+    let { sessionLength } = this.state;
+    sessionLength--
+    this.setState({
+      sessionLength: sessionLength,
+      timeCountDown: sessionLength * 60,
+      percentVal: 0
+    })
+  }
+
+  increaseBreak = () => {
+    console.log('Break increased by 1 minute!');
+    let { breakLength } = this.state;
+    breakLength++
+    this.setState({ breakLength: breakLength })
+  }
+
+  decreaseBreak = () => {
+    console.log('Break decreased by 1 minute!');
+    let { breakLength } = this.state;
+    breakLength--
+    this.setState({ breakLength: breakLength })
+  }
+
   render() {
     const {
       timeCountDown,
       percentVal,
-      disabled
+      disabled,
+      sessionLength,
+      breakLength
     } = this.state
 
     return (
@@ -69,8 +111,15 @@ export default class App extends Component {
           startClick={ this.startTimer }
           stopClick={ this.stopTimer }
           resetClick={ this.resetTimer }
-          disableStartBtn= { disabled } />
-        <SessionControls />
+          disableStartBtn={ disabled } />
+        <SessionControls
+          increamentSession={ this.increaseSession }
+          decrementSession={ this.decreaseSession }
+          increamentBreak={ this.increaseBreak }
+          decrementBreak={ this.decreaseBreak }
+          sessionTime={ sessionLength }
+          breakTime={ breakLength }
+          disableBtns={ disabled } />
       </div>
     );
   }

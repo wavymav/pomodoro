@@ -19,14 +19,12 @@ export default class Controls extends Component {
           onClick={ stopClick }>
           Stop
         </button>
-
         <button
           className="btn start"
           onClick={ startClick }
-          disabled={disableStartBtn}>
+          disabled={ disableStartBtn }>
           Start
         </button>
-        
         <button
           className="btn reset"
           onClick={ resetClick }>
