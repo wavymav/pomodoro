@@ -7,12 +7,59 @@ import Controls from './Controls';
 import SessionControls from './SessionControls';
 
 export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      sessionLength: 25,
+      breakLength: 5,
+      timeCountDown: 25 * 60,
+      percentVal: 0
+    }
+  }
+
+  startTimer = () => {
+    console.log('Start was clicked!');
+    let { timeCountDown } = this.state;
+
+    this.timerInterval = setInterval(() => {
+      this.setState({
+        timeCountDown: --timeCountDown,
+        percentVal: Math.abs(Math.round(((timeCountDown)/ 1500) * 100 - 100))
+      })
+      console.log(this.state.percentVal);
+    }, 1000)
+  }
+
+  stopTimer = () => {
+    console.log('Stop was clicked!');
+    clearInterval(this.timerInterval)
+  }
+
+  resetTimer = () => {
+    console.log('Reset was clicked!');
+    this.setState({
+      timeCountDown: 25 * 60,
+      percentVal: 0
+    })
+    clearInterval(this.timerInterval)
+  }
+
   render() {
+    const {
+      timeCountDown,
+      percentVal
+    } = this.state
+
     return (
       <div className="container">
-        <Header />
-        <Timer />
-        <Controls />
+        <Header header="Pomodoro Timer" />
+        <Timer
+          time={timeCountDown}
+          percent={percentVal} />
+        <Controls
+          startClick={this.startTimer}
+          stopClick={this.stopTimer}
+          resetClick={this.resetTimer} />
         <SessionControls />
       </div>
     );
