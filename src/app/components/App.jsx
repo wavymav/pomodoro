@@ -15,7 +15,8 @@ export default class App extends Component {
       timeCountDown: null,
       percentVal: 0,
       session: true,
-      totalTime: null
+      totalTime: null,
+      disabled: false
     }
   }
 

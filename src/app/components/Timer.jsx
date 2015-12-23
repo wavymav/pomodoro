@@ -14,7 +14,10 @@ export default class Timer extends Component {
   }
 
   render() {
-    const { time, percent } = this.props
+    const {
+      time,
+      percent
+    } = this.props
     const circleFill = `c100 p${ percent } normal`
     const timer = this.secondsToHMS(time)
 
@@ -30,4 +33,9 @@ export default class Timer extends Component {
       </div>
     );
   }
+}
+
+Timer.propTypes = {
+  time: React.PropTypes.number.isRequired,
+  percent: React.PropTypes.number.isRequired
 }

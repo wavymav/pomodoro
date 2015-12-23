@@ -34,3 +34,10 @@ export default class Controls extends Component {
     );
   }
 }
+
+Controls.propTypes = {
+  startClick: React.PropTypes.func.isRequired,
+  stopClick: React.PropTypes.func.isRequired,
+  resetClick: React.PropTypes.func.isRequired,
+  disableStartBtn: React.PropTypes.bool.isRequired
+}
