@@ -4,12 +4,16 @@ import React, { Component } from 'react';
 
 export default class Header extends Component {
   render() {
-    const { header } = this.props
+    const {
+      header,
+      sessionHead
+    } = this.props
+    const session = (sessionHead ? 'Session' : 'Break')
 
     return (
       <div className="header-box">
         <h1>{ header }</h1>
-        <p>Session</p>
+        <p>{ session }</p>
       </div>
     )
   }

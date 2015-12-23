@@ -13,7 +13,9 @@ export default class App extends Component {
       sessionLength: 25,
       breakLength: 5,
       timeCountDown: null,
-      percental: 0
+      percentVal: 0,
+      session: true,
+      totalTime: null
     }
   }
 
@@ -21,23 +23,54 @@ export default class App extends Component {
     console.log('Component Mounted');
     let { sessionLength } = this.state;
     let initialTime = sessionLength * 60
-    this.setState({ timeCountDown: initialTime })
+    this.setState({
+      timeCountDown: initialTime,
+      totalTime: initialTime
+    })
+  }
+
+  setSession() {
+    let { session, sessionLength, breakLength } = this.state;
+    // let timerVal = sessionLength * 60
+    // let totalTime = timeCountDown
+    this.setState({
+      session: !session
+    })
+    console.log(this.state.session);
+    if (this.state.session) {
+      this.setState({
+        timeCountDown: sessionLength * 60,
+        percentVal: 0,
+        totalTime: sessionLength * 60
+      })
+    } else {
+      this.setState({
+        timeCountDown: breakLength * 60,
+        percentVal: 0,
+        totalTime: breakLength * 60
+      })
+    }
   }
 
   startTimer = () => {
     console.log('Start was clicked!');
-    let { sessionLength, timeCountDown } = this.state;
-    let timerVal = sessionLength * 60
-    let totalTime = timeCountDown
     this.setState({ disabled: true })
 
     this.timerInterval = setInterval(() => {
+      let { timeCountDown, totalTime, percentVal } = this.state;
+      let timer = timeCountDown
+      let total = totalTime
       this.setState({
-        timeCountDown: --timerVal,
-        percentVal: Math.abs(Math.round(((timerVal)/ totalTime) * 100 - 100))
+        timeCountDown: timer -= 1,
+        percentVal: Math.abs(Math.round(((timer)/ total) * 100 - 100))
       })
-      console.log(this.state.percentVal);
+      if ( timeCountDown === 0) {
+        this.setSession()
+      }
+      console.log(percentVal);
+      console.log(timeCountDown);
     }, 1000)
+
   }
 
   stopTimer = () => {
@@ -63,6 +96,7 @@ export default class App extends Component {
     this.setState({
       sessionLength: sessionLength,
       timeCountDown: sessionLength * 60,
+      totalTime: sessionLength * 60,
       percentVal: 0
     })
   }
@@ -74,6 +108,7 @@ export default class App extends Component {
     this.setState({
       sessionLength: sessionLength,
       timeCountDown: sessionLength * 60,
+      totalTime: sessionLength * 60,
       percentVal: 0
     })
   }
@@ -98,12 +133,15 @@ export default class App extends Component {
       percentVal,
       disabled,
       sessionLength,
-      breakLength
+      breakLength,
+      session
     } = this.state
 
     return (
       <div className="container">
-        <Header header="Pomodoro Timer" />
+        <Header
+          header="Pomodoro Timer"
+          sessionHead={ session } />
         <Timer
           time={ timeCountDown }
           percent={ percentVal } />
