@@ -1,4 +1,12 @@
-import { INCREMENT_SESSION, INCREMENT_BREAK, DECREMENT_SESSION, DECREMENT_BREAK  } from '../constants';
+import {
+  INCREMENT_SESSION,
+  INCREMENT_BREAK,
+  DECREMENT_SESSION,
+  DECREMENT_BREAK,
+  START_TIMER,
+  RESET_TIMER,
+  STOP_TIMER
+} from '../constants';
 
 export const incrementSession = () => {
   return {
@@ -9,6 +17,24 @@ export const incrementSession = () => {
 export const decrementSession = () => {
   return {
     type: DECREMENT_SESSION
+  }
+}
+
+export const startSession = () => {
+  return {
+    type: START_TIMER
+  }
+}
+
+export const resetSession = () => {
+  return {
+    type: RESET_TIMER
+  }
+}
+
+export const stopSession = () => {
+  return {
+    type: STOP_TIMER
   }
 }
 

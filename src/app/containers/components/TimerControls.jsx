@@ -1,9 +1,8 @@
-import './Controls.less'
+import './TimerControls.less'
 
 import React, { Component } from 'react';
 
-
-export default class Controls extends Component {
+export default class TimerControls extends Component {
   render() {
     const {
       startClick,
@@ -35,9 +34,9 @@ export default class Controls extends Component {
   }
 }
 
-Controls.propTypes = {
-  startClick: React.PropTypes.func.isRequired,
-  stopClick: React.PropTypes.func.isRequired,
-  resetClick: React.PropTypes.func.isRequired,
-  disableStartBtn: React.PropTypes.bool.isRequired
-}
+// Controls.propTypes = {
+//   startClick: React.PropTypes.func.isRequired,
+//   stopClick: React.PropTypes.func.isRequired,
+//   resetClick: React.PropTypes.func.isRequired,
+//   disableStartBtn: React.PropTypes.bool.isRequired
+// }

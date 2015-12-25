@@ -10,7 +10,8 @@ export default class SessionControls extends Component {
       increamentSession,
       decrementSession,
       increamentBreak,
-      decrementBreak
+      decrementBreak,
+      disableBtn
     } = this.props
 
     return (
@@ -20,13 +21,15 @@ export default class SessionControls extends Component {
           <p className="len-val">
             <button
               className="btn-dec"
-              onClick={ decrementBreak } >
+              onClick={ decrementBreak }
+              disabled={ disableBtn } >
               -
             </button>
               <span>{ breakTime }</span>
             <button
               className="btn-inc"
-              onClick={ increamentBreak } >
+              onClick={ increamentBreak }
+              disabled={ disableBtn } >
               +
             </button>
           </p>
@@ -36,13 +39,15 @@ export default class SessionControls extends Component {
           <p className="len-val">
             <button
               className="btn-dec"
-              onClick={ decrementSession } >
+              onClick={ decrementSession }
+              disabled={ disableBtn } >
               -
             </button>
               <span>{ sessionTime }</span>
             <button
               className="btn-inc"
-              onClick={ increamentSession } >
+              onClick={ increamentSession }
+              disabled={ disableBtn } >
               +
             </button>
           </p>
@@ -52,11 +57,11 @@ export default class SessionControls extends Component {
   }
 }
 
-SessionControls.propTypes = {
-  increamentSession: React.PropTypes.func.isRequired,
-  decrementSession: React.PropTypes.func.isRequired,
-  increamentBreak: React.PropTypes.func.isRequired,
-  decrementBreak: React.PropTypes.func.isRequired,
-  sessionTime: React.PropTypes.number.isRequired,
-  breakTime: React.PropTypes.number.isRequired
-}
+// SessionControls.propTypes = {
+//   increamentSession: React.PropTypes.func.isRequired,
+//   decrementSession: React.PropTypes.func.isRequired,
+//   increamentBreak: React.PropTypes.func.isRequired,
+//   decrementBreak: React.PropTypes.func.isRequired,
+//   sessionTime: React.PropTypes.number.isRequired,
+//   breakTime: React.PropTypes.number.isRequired
+// }

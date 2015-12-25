@@ -35,7 +35,7 @@ export default class Timer extends Component {
   }
 }
 
-Timer.propTypes = {
-  time: React.PropTypes.number.isRequired,
-  percent: React.PropTypes.number.isRequired
-}
+// Timer.propTypes = {
+//   time: React.PropTypes.number.isRequired,
+//   percent: React.PropTypes.number.isRequired
+// }

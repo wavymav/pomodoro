@@ -19,7 +19,7 @@ export default class Header extends Component {
   }
 }
 
-Header.propTypes = {
-  header: React.PropTypes.string.isRequired,
-  sessionHead: React.PropTypes.bool.isRequired
-}
+// Header.propTypes = {
+//   header: React.PropTypes.string.isRequired,
+//   sessionHead: React.PropTypes.bool.isRequired
+// }
