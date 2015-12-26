@@ -86,6 +86,7 @@ export const pomodoro = (state = initialState, action) => {
         ...state,
         sessionLength: state.sessionLength,
         time: state.sessionLength * 60,
+        percent: 0,
         active: false,
         control: false
       }

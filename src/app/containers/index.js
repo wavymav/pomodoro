@@ -1,4 +1,4 @@
-// import './App.less'
+import './App.less'
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
