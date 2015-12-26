@@ -1,4 +1,4 @@
-import './TimerControls.less'
+// import './TimerControls.less'
 
 import React, { Component } from 'react';
 
