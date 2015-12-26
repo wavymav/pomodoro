@@ -57,11 +57,11 @@ export default class SessionControls extends Component {
   }
 }
 
-// SessionControls.propTypes = {
-//   increamentSession: React.PropTypes.func.isRequired,
-//   decrementSession: React.PropTypes.func.isRequired,
-//   increamentBreak: React.PropTypes.func.isRequired,
-//   decrementBreak: React.PropTypes.func.isRequired,
-//   sessionTime: React.PropTypes.number.isRequired,
-//   breakTime: React.PropTypes.number.isRequired
-// }
+SessionControls.propTypes = {
+  increamentSession: React.PropTypes.func.isRequired,
+  decrementSession: React.PropTypes.func.isRequired,
+  increamentBreak: React.PropTypes.func.isRequired,
+  decrementBreak: React.PropTypes.func.isRequired,
+  sessionTime: React.PropTypes.number.isRequired,
+  breakTime: React.PropTypes.number.isRequired
+}

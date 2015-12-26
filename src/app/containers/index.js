@@ -27,8 +27,7 @@ export default class App extends Component {
     return (
       <div className="container">
         <Header
-          header="Pomodoro Timer"
-          sessionHead="Session"/>
+          sessionType={ pomodoro.session }/>
         <Timer
           time={ pomodoro.time }
           percent={ pomodoro.percent }

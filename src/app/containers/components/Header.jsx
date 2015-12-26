@@ -5,21 +5,19 @@ import React, { Component } from 'react';
 export default class Header extends Component {
   render() {
     const {
-      header,
-      sessionHead
+      sessionType
     } = this.props
-    const session = (sessionHead ? 'Session' : 'Break')
+    const session = (sessionType ? 'Session' : 'Break')
 
     return (
       <div className="header-box">
-        <h1>{ header }</h1>
+        <h1>Pomodoro Timer</h1>
         <p>{ session }</p>
       </div>
     )
   }
 }
 
-// Header.propTypes = {
-//   header: React.PropTypes.string.isRequired,
-//   sessionHead: React.PropTypes.bool.isRequired
-// }
+Header.propTypes = {
+  sessionType: React.PropTypes.bool.isRequired
+}
