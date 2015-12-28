@@ -5,7 +5,8 @@ import {
   STOP_TIMER,
   RESET_TIMER,
   DECREMENT_SESSION,
-  DECREMENT_BREAK  } from '../constants';
+  DECREMENT_BREAK
+} from '../constants';
 
 const initialState = {
   sessionLength: 25,
@@ -84,8 +85,9 @@ export const pomodoro = (state = initialState, action) => {
     case RESET_TIMER:
       return {
         ...state,
-        sessionLength: state.sessionLength,
+        session: true,
         time: state.sessionLength * 60,
+        totalTime: state.sessionLength * 60,
         percent: 0,
         active: false,
         control: false
