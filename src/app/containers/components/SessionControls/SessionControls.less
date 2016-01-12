@@ -5,15 +5,15 @@
 @btnDecLight: #768485;
 
 
-.session-container {
+.session-controller-container {
   display: flex;
 
-  .ctrl {
+  .session-controller {
     padding: 0 20px;
     text-align: center;
     color: #fff;
 
-    .len-head {
+    .session-controller__header {
       font-size: 28px;
       margin: 20px 0 30px;
 
@@ -36,7 +36,7 @@
       }
     }
 
-    .len-val {
+    .session-controller__value {
       font-size: 48px;
       margin: 10px 0;
 
@@ -56,7 +56,7 @@
         font-size: 22px;
       }
 
-      .btn-dec {
+      .session-controller__btn--decrement {
         border-radius: 50%;
         background: @btnColorLight;
         color: @btnDecLight;
@@ -90,7 +90,7 @@
         }
       }
 
-      .btn-inc {
+      .session-controller__btn--increament {
         border-radius: 50%;
         background: @btnColorLight;
         color: @btnDecLight;

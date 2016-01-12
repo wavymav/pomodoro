@@ -26,7 +26,7 @@ export default class App extends Component {
     } = this.props
 
     return (
-      <div className="container">
+      <div className="app-container">
         <Header
           sessionType={ pomodoro.session }/>
         <Timer
@@ -68,7 +68,7 @@ export default class App extends Component {
 
   startTimer = () => {
     this.interval = setInterval(() => {
-      this.props.dispatch(startSession())
+      this.props.startSession()
     }, 1000)
   }
 
@@ -95,6 +95,7 @@ const mapDispatchToProps = (dispatch) => (
     decrementSession,
     incrementBreak,
     decrementBreak,
+    startSession,
     stopSession,
     resetSession
   }, dispatch)

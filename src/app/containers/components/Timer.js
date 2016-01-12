@@ -1,6 +1,6 @@
 import './Timer.less'
 
-import React, { Component } from 'react';
+import React from 'react';
 
 const secondsToHMS = (secs) => {
   secs = Number(secs);
@@ -17,7 +17,7 @@ export const Timer = ({ time, percent }) => {
   const timer = secondsToHMS(time)
 
   return (
-    <div className="timer-box">
+    <div className="timer-container">
       <div className={ circleFill }>
         <span>{ timer }</span>
         <div className="slice">

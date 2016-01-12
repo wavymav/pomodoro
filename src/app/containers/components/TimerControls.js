@@ -8,20 +8,20 @@ export const TimerControls = ({
   resetClick,
   disableStartBtn
 }) => (
-  <div className="ctrl-container">
+  <div className="timer-controller-container">
     <button
-      className="btn stop"
+      className="timer-controller__btn stop"
       onClick={ stopClick }>
       Stop
     </button>
     <button
-      className="btn start"
+      className="timer-controller__btn start"
       onClick={ startClick }
       disabled={ disableStartBtn }>
       Start
     </button>
     <button
-      className="btn reset"
+      className="timer-controller__btn reset"
       onClick={ resetClick }>
       Reset
     </button>
