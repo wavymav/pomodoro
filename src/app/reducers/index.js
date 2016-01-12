@@ -30,7 +30,7 @@ export const pomodoro = (state = initialState, action) => {
         totalTime: (state.sessionLength * 60) + 60
       }
     case DECREMENT_SESSION:
-      if (state.sessionLength < 1) { return state }
+      if (state.sessionLength < 2) { return state }
       return {
         ...state,
         sessionLength: state.sessionLength - 1,
@@ -44,7 +44,7 @@ export const pomodoro = (state = initialState, action) => {
         breakLength: state.breakLength + 1
       }
     case DECREMENT_BREAK:
-      if (state.breakLength < 1) { return state }
+      if (state.breakLength < 2) { return state }
       return {
         ...state,
         breakLength: state.breakLength - 1

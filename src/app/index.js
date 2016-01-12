@@ -10,7 +10,7 @@ const timer = combineReducers(reducers)
 
 const logger = createLogger();
 const createStoreWithMiddleware = applyMiddleware(
-  // logger
+  logger
 )(createStore);
 const store = createStoreWithMiddleware(timer);
 

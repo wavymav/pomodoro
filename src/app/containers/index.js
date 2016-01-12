@@ -1,7 +1,8 @@
-// import './App.less'
+import './App.less'
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import {
   SessionControls,
   TimerControls,
@@ -50,19 +51,19 @@ export default class App extends Component {
   }
 
   incrementSessionLength = () => {
-    this.props.dispatch(incrementSession())
+    this.props.incrementSession()
   }
 
   decrementSessionLength = () => {
-    this.props.dispatch(decrementSession())
+    this.props.decrementSession()
   }
 
   incrementBreakLength = () => {
-    this.props.dispatch(incrementBreak())
+    this.props.incrementBreak()
   }
 
   decrementBreakLength = () => {
-    this.props.dispatch(decrementBreak())
+    this.props.decrementBreak()
   }
 
   startTimer = () => {
@@ -73,18 +74,33 @@ export default class App extends Component {
 
   stopTimer = () => {
     clearInterval(this.interval)
-    this.props.dispatch(stopSession())
+    this.props.stopSession()
   }
 
   resetTimer = () => {
     clearInterval(this.interval)
-    this.props.dispatch(resetSession())
+    this.props.resetSession()
   }
 
 }
 
-const mapStateToProps = (state) => ({
-  pomodoro: state.pomodoro
-})
+// const mapStateToProps = (state) => ({
+//   pomodoro: state.pomodoro
+// })
+const mapStateToProps = ({ pomodoro }) => ({ pomodoro })
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({
+    incrementSession,
+    decrementSession,
+    incrementBreak,
+    decrementBreak,
+    stopSession,
+    resetSession
+  }, dispatch)
+)
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
