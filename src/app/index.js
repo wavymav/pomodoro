@@ -17,7 +17,7 @@ const store = createStoreWithMiddleware(timer);
 
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={ store }>
     <App />
   </Provider>,
   document.getElementById('main')
