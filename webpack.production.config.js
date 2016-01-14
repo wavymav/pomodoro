@@ -24,7 +24,13 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin("[name].css")
+    new ExtractTextPlugin("[name].css"),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false,
+        screw_ie8: true
+      }
+    })
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
